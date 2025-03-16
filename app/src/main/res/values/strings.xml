@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Dehazing</string>
+    <string name="denied">This app requires permission to access this feature. You need to enable it in settings.</string>
+    <string name="open_setting">Open Settings</string>
+    <string name="dismis">Dismiss</string>
+    <string name="required_permission">Permission Required</string>
+    <string name="open_camera">Open Camera</string>
+    <string name="open_gallery">Open Gallery</string>
+    <string name="ok">Oke</string>
+    <string name="error">error</string>
+    <string name="loading">Loading…</string>
+
+</resources>
