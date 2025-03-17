@@ -3,12 +3,12 @@ package com.mk.core.domain.usecase
 import android.graphics.Bitmap
 import android.util.Log
 import com.mk.core.domain.model.StateApp
-import com.mk.core.domain.repository.DCPRepository
+import com.mk.core.domain.repository.DehazingRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
 class DehazingUseCase(
-    private val repository: DCPRepository
+    private val repository: DehazingRepository
 ) {
     operator fun invoke(bitmap: Bitmap): Flow<StateApp<Bitmap>> = flow  {
         emit(StateApp.Loading())

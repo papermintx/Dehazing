@@ -2,6 +2,6 @@ package com.mk.core.domain.repository
 
 import android.graphics.Bitmap
 
-interface DCPRepository {
+interface DehazingRepository {
     suspend fun dehazeImage(bitmap: Bitmap): Bitmap
 }

@@ -5,6 +5,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.mk.dehazing.ui.presentation.home.HomeScreen
+import com.mk.dehazing.ui.presentation.result.ResultScreen
 
 @Composable
 fun Navigation(
@@ -21,5 +22,6 @@ fun Navigation(
         ) {
             HomeScreen()
         }
+
     }
 }

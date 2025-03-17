@@ -5,6 +5,7 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
 import androidx.core.content.FileProvider
+import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileOutputStream
 
@@ -21,4 +22,10 @@ fun Bitmap.toUri(context: Context): Uri{
 fun Uri.toBitMap(context: Context): Bitmap {
     val inputStream = context.contentResolver.openInputStream(this)
     return BitmapFactory.decodeStream(inputStream)
+}
+
+fun bitmapToByteArray(bitmap: Bitmap): ByteArray {
+    val byteArrayOutputStream = ByteArrayOutputStream()
+    bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream)
+    return byteArrayOutputStream.toByteArray()
 }

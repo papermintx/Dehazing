@@ -1,7 +1,7 @@
 package com.mk.core.di
 
-import com.mk.core.data.DCPRepositoryImpl
-import com.mk.core.domain.repository.DCPRepository
+import com.mk.core.data.DehazingRepositoryImpl
+import com.mk.core.domain.repository.DehazingRepository
 import com.mk.core.domain.usecase.DehazingUseCase
 import dagger.Module
 import dagger.Provides
@@ -15,12 +15,12 @@ object ModuleApp {
 
     @Provides
     @Singleton
-    fun provideDCPRepository(): DCPRepository {
-        return DCPRepositoryImpl()
+    fun provideDCPRepository(): DehazingRepository {
+        return DehazingRepositoryImpl()
     }
 
     @Provides
-    fun provideDehazingUseCase(repository: DCPRepository): DehazingUseCase {
+    fun provideDehazingUseCase(repository: DehazingRepository): DehazingUseCase {
         return DehazingUseCase(repository)
     }
 }

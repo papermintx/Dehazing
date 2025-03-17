@@ -83,13 +83,15 @@ object DCP {
         val meanTransmission = Mat()
         Imgproc.GaussianBlur(transmission, meanTransmission, Size(radius.toDouble(), radius.toDouble()), epsilon)
         val guidedTransmission = Mat()
+
+
         Core.addWeighted(transmission, 1.5, meanTransmission, -0.5, 0.0, guidedTransmission)
         return guidedTransmission
     }
 
     private fun recoverScene(image: Mat, transmission: Mat, atmosphericLight: DoubleArray): Mat {
         val resultImage = Mat(image.size(), CvType.CV_32FC3)
-        val t0 = 0.1
+        val t0 = 0.3
 
         for (i in 0 until 3) {
             val channel = Mat()

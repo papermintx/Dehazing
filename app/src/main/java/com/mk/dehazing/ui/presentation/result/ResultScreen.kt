@@ -1,79 +1,43 @@
 package com.mk.dehazing.ui.presentation.result
 
-import android.net.Uri
+import android.graphics.Bitmap
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Card
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
-import androidx.hilt.navigation.compose.hiltViewModel
-import coil.compose.rememberAsyncImagePainter
-import com.mk.dehazing.ui.presentation.SharedViewModel
-
 
 @Composable
 fun ResultScreen(
     modifier: Modifier = Modifier,
-    sharedViewModel: SharedViewModel = hiltViewModel(),
-    uri: Uri
+    bitmap: Bitmap
 ) {
-    Scaffold { innerPadiing ->
-        Column(
-            modifier = modifier.fillMaxSize().padding(innerPadiing),
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            Card(
-                modifier = Modifier
-                    .weight(1f),
-                shape = RoundedCornerShape(16.dp),
-            ) {
-                Image(
-                    painter = rememberAsyncImagePainter(uri),
-                    contentDescription = "Captured Image",
-                    contentScale = ContentScale.Crop,
-                    modifier = Modifier.fillMaxSize()
-                        .weight(1f)
-                )
-            }
-
-            Card (
+    Scaffold { innerpadding ->
+        Box(
+            modifier = modifier.padding(innerpadding)
+                .fillMaxSize()
+        ){
+            Image(
+                bitmap = bitmap.asImageBitmap(),
+                contentDescription = "Hasil Dehaze",
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(16.dp),
-                shape = RoundedCornerShape(16.dp),
-            ) {
-                sharedViewModel.bitmap?.let {
-                    Image(
-                        bitmap = it.asImageBitmap(),
-                        contentDescription = "Captured Image",
-                        contentScale = ContentScale.Crop,
-                        modifier = Modifier.fillMaxSize()
-                            .weight(1f)
-                    )
-                } ?: run {
-                    Column(
-                        modifier = Modifier.fillMaxSize(),
-                        horizontalAlignment = Alignment.CenterHorizontally,
-                        verticalArrangement = Arrangement.Center
-                    ) {
-                        Text(
-                            text = "No Image Found",
-                            modifier = Modifier.padding(16.dp)
-                        )
-                    }
-                }
-            }
+                    .clip(RoundedCornerShape(16.dp))
+                    .border(2.dp, Color.Gray, RoundedCornerShape(16.dp)),
+                contentScale = ContentScale.Crop
+            )
         }
     }
-}
 
+}
